@@ -1,0 +1,46 @@
+dialogui,dialog,about,a11yhelp,dialogadvtab,basicstyles,bidi,blockquote,notification,button,toolbar,clipboard,panelbutton,panel,floatpanel,colorbutton,colordialog,templates,menu,contextmenu,copyformatting,div,resize,elementspath,enterkey,entities,popup,filetools,filebrowser,find,fakeobjects,floatingspace,listblock,richcombo,font,format,horizontalrule,htmlwriter,wysiwygarea,image,indent,indentblock,indentlist,justify,menubutton,language,link,list,liststyle,magicline,maximize,pagebreak,pastetext,pastetools,pastefromgdocs,pastefromword,preview,print,removeformat,selectall,showblocks,showborders,specialchar,scayt,stylescombo,tab,table,tabletools,tableselection,undo,lineutils,widgetselection,widget,notificationaggregator,uploadwidget,uploadimage,wsc,lite
+
+
+
+                          @if($doc_sec->id != $document_section->id)
+                            <option value="{{ $doc_sec->section_order_id }}" <?php if($doc_sec->section_order_id == $document_section->section_order_id) echo "selected" ?> >{{ $doc_sec->section_order_id.' - '.$doc_sec->section_title }}</option>
+                          @endif
+
+
+                          style="background-color: antiquewhite;"
+
+
+
+
+            SELECT * FROM document_sections 
+		        LEFT JOIN document_section_versions
+                on document_section_id = document_sections.id
+                WHERE document_section_versions.id = (
+                	SELECT MAX(id) FROM document_section_versions WHERE document_section_id = document_sections.id GROUP BY document_section_id
+                )
+
+
+
+                'pending','accepted','rejected','ongoing','finished'
+
+
+
+OU=Admins,DC=BBSY,DC=LOC
+OU=F3,OU=IT,OU=AlBaraka Bank Syria,DC=BBSY,DC=LOC
+OU=Admins,DC=BBSY,DC=LOC
+OU=Users,OU=Abandoned Accounts,DC=BBSY,DC=LOC
+OU=F3,OU=IT,OU=AlBaraka Bank Syria,DC=BBSY,DC=LOC
+OU=Admins,DC=BBSY,DC=LOC
+OU=Admins,DC=BBSY,DC=LOC
+OU=Admins,DC=BBSY,DC=LOC
+OU=Users,OU=Abandoned Accounts,DC=BBSY,DC=LOC
+OU=Admins,DC=BBSY,DC=LOC
+OU=Admins,DC=BBSY,DC=LOC
+OU=Admins,DC=BBSY,DC=LOC
+OU=Admins,DC=BBSY,DC=LOC
+OU=F3,OU=IT,OU=AlBaraka Bank Syria,DC=BBSY,DC=LOC
+OU=F3,OU=IT,OU=AlBaraka Bank Syria,DC=BBSY,DC=LOC
+OU=F3,OU=IT,OU=AlBaraka Bank Syria,DC=BBSY,DC=LOC
+OU=F3,OU=IT,OU=AlBaraka Bank Syria,DC=BBSY,DC=LOC
+OU=Admins,DC=BBSY,DC=LOC
+OU=Users,OU=Abandoned Accounts,DC=BBSY,DC=LOC

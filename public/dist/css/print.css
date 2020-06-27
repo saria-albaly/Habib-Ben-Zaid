@@ -1,0 +1,73 @@
+@media print {
+      
+@font-face {
+  font-family: "Janna LT";
+  src: url("../fonts/JannaLTBold/Regular/JannaLT-Regular.eot"); /* IE9 Compat Modes */
+  src: url("../fonts/JannaLTBold/Regular/JannaLT-Regular.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    url("../fonts/JannaLTBold/Regular/JannaLT-Regular.otf") format("opentype"), /* Open Type Font */
+    url("../fonts/JannaLTBold/Regular/JannaLT-Regular.svg") format("svg"), /* Legacy iOS */
+    url("../fonts/JannaLTBold/Regular/JannaLT-Regular.ttf") format("truetype"), /* Safari, Android, iOS */
+    url("../fonts/JannaLTBold/Regular/JannaLT-Regular.woff") format("woff"), /* Modern Browsers */
+    url("../fonts/JannaLTBold/Regular/JannaLT-Regular.woff2") format("woff2"); /* Modern Browsers */
+  font-weight: normal;
+  font-style: normal;
+}
+      body{counter-reset: section}
+      h2{counter-reset: sub-section;direction: rtl;}
+      h3{counter-reset: composite;direction: rtl;}
+      h4{counter-reset: detail;direction: rtl;}
+
+      h2:before{
+             counter-increment: section;
+             content: counter(section) " ";
+           }
+      h3:before{
+             counter-increment: sub-section;
+             content: counter(section) "." counter(sub-section) " ";
+           }
+      h4:before{
+             counter-increment: composite;
+             content: counter(section) "." counter(sub-section) "." counter(composite) " ";
+           }
+      h5:before{
+             counter-increment: detail;
+             content: counter(section) "." counter(sub-section) "." counter(composite) "." counter(detail) " ";
+         }
+      .ice-del {display: none}   
+}
+
+@font-face {
+  font-family: "Janna LT";
+  src: url("../fonts/JannaLTBold/Regular/JannaLT-Regular.eot"); /* IE9 Compat Modes */
+  src: url("../fonts/JannaLTBold/Regular/JannaLT-Regular.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    url("../fonts/JannaLTBold/Regular/JannaLT-Regular.otf") format("opentype"), /* Open Type Font */
+    url("../fonts/JannaLTBold/Regular/JannaLT-Regular.svg") format("svg"), /* Legacy iOS */
+    url("../fonts/JannaLTBold/Regular/JannaLT-Regular.ttf") format("truetype"), /* Safari, Android, iOS */
+    url("../fonts/JannaLTBold/Regular/JannaLT-Regular.woff") format("woff"), /* Modern Browsers */
+    url("../fonts/JannaLTBold/Regular/JannaLT-Regular.woff2") format("woff2"); /* Modern Browsers */
+  font-weight: normal;
+  font-style: normal;
+}
+
+      body{counter-reset: section}
+      h2{counter-reset: sub-section;direction: rtl;}
+      h3{counter-reset: composite;direction: rtl;}
+      h4{counter-reset: detail;direction: rtl;}
+
+      h2:before{
+             counter-increment: section;
+             content: counter(section) " ";
+           }
+      h3:before{
+             counter-increment: sub-section;
+             content: counter(section) "." counter(sub-section) " ";
+           }
+      h4:before{
+             counter-increment: composite;
+             content: counter(section) "." counter(sub-section) "." counter(composite) " ";
+           }
+      h5:before{
+             counter-increment: detail;
+             content: counter(section) "." counter(sub-section) "." counter(composite) "." counter(detail) " ";
+         }
+      .ice-del {display: none}   
