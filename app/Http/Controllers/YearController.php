@@ -24,7 +24,8 @@ class YearController extends Controller
                             'bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js',
                             ];
         
-        $data['_view']   = 'doucments/index';
+        $data['years']   = Year::where(['is_deleted'=>false])->orderBy('id', 'DESC')->get();
+        $data['_view']   = 'years/index';
         return view('include/main', $data);
     }
 
@@ -36,6 +37,7 @@ class YearController extends Controller
     public function create()
     {
         //
+        return view('years/modals/create_year');
     }
 
     /**
@@ -47,6 +49,26 @@ class YearController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'year_name' => 'required:max:2100',
+          ]);
+
+        $year_name = $request->year_name;
+
+        if(!isset($year_name)){
+            $data['_view']   = 'global_modal/404';
+            return view('include/main', $data); 
+        }
+
+        $is_active = $request->is_active || false;
+        if(isset($is_active) && $is_active == "on")
+            $is_active = true;
+
+        $year            = new Year();
+        $year->year_name = $year_name;
+        $year->is_active = $is_active;
+        $year->save();
+        return redirect('years');
     }
 
     /**
@@ -69,6 +91,7 @@ class YearController extends Controller
     public function edit(Year $year)
     {
         //
+        return view('years/modals/edit_year',$year);
     }
 
     /**
@@ -81,6 +104,26 @@ class YearController extends Controller
     public function update(Request $request, Year $year)
     {
         //
+        $request->validate([
+            'year_name' => 'required:max:2100',
+        ]);
+
+        $year_name = $request->year_name;
+
+        if(!isset($year_name)){
+            $data['_view']   = 'global_modal/404';
+            return view('include/main', $data); 
+        }
+
+        $is_active = $request->is_active || false;
+        if(isset($is_active) && $is_active == "on")
+            $is_active = true;
+
+        $year->year_name = $year_name;
+        $year->is_active = $is_active;
+        $year->save();
+
+        return redirect('years');
     }
 
     /**
@@ -92,5 +135,9 @@ class YearController extends Controller
     public function destroy(Year $year)
     {
         //
+        $year->is_deleted = true;
+        $year->save();
+
+        return redirect('years');
     }
 }

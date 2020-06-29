@@ -20,7 +20,7 @@ class Authenticate extends Middleware
         // Assuming employeeid matches the windows logon
 /*        if($request->server('REMOTE_USER') !== null){
             $remoteUser = substr($request->server('REMOTE_USER'), 1 + strpos($request->server('REMOTE_USER') , '\\'));        
-            if ($request->server('AUTH_USER') && ($user = User::where(['email' => $remoteUser."@bbsy.loc"])->orWhere(['email' => $remoteUser."@albarakasyria.com"])->first()))
+            if ($request->server('AUTH_USER') && ($user = User::where(['email' => $remoteUser.""])->orWhere(['email' => $remoteUser.""])->first()))
             {
                 $this->auth->login($user);
             }

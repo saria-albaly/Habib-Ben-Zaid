@@ -42,7 +42,7 @@
                 <li><a href="{{url('years')}}"     style="background-color: white !important;">إدارة السنوات</a></li>
                 <li><a href="{{url('semesters')}}" style="background-color: white !important;">إدارة الفصول</a></li>
                 <li><a href="{{url('teachers')}}"  style="background-color: white !important;">إدارة الأساتذة</a></li>
-                <li><a href="{{url('studnets')}}"  style="background-color: white !important;">إدارة الطلاب</a></li>
+                <li><a href="{{url('student')}}"  style="background-color: white !important;">إدارة الطلاب</a></li>
                 <li><a href="{{url('courses')}}"   style="background-color: white !important;">إدارة الحلقات</a></li>
                 <li><a href="{{url('activities')}}"   style="background-color: white !important;">إدارة النشاطات</a></li>
                 <li><a href="{{url('settings')}}"   style="background-color: white !important;">إعدادات</a></li>
@@ -58,7 +58,8 @@
               <li><a href="{{url('semester/activities')}}" style="background-color: white !important;">النشاطات</a></li>
               <li><a href="{{url('semester/points')}}" style="background-color: white !important;">النقاط</a></li>
               <li><a href="{{url('semester/recite')}}" style="background-color: white !important;">التسميعات</a></li>
-              <li><a href="{{url('semester/absences')}}" style="background-color: white !important;">الغيابات</a></li>
+              <li><a href="{{url('semester/absences')}}" style="background-color: white !important;">تقرير غيابات الطلاب</a></li>
+              <li><a href="{{url('semester/absences')}}" style="background-color: white !important;">تسجيل حضور الطلاب</a></li>
           </ul>
         </li>
           <li class="treeview" style="text-align: right;direction: rtl;">

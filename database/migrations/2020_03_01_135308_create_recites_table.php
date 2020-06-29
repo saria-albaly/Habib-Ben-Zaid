@@ -19,7 +19,8 @@ class CreateRecitesTable extends Migration
             $table->integer('page_id');
             $table->unsignedBigInteger('y_s_c_id');
             $table->unsignedBigInteger('student_id');
-        
+            $table->unsignedBigInteger('course_id');
+
             $table->timestamps();
         });
 
@@ -29,6 +30,10 @@ class CreateRecitesTable extends Migration
              ->on('year_semester_course')
              ->onDelete('cascade');
 
+            $table->foreign('course_id')
+             ->references('id')
+             ->on('courses')
+             ->onDelete('cascade');
 /*             $table->foreign('student_id')
              ->references('id')
              ->on('students')

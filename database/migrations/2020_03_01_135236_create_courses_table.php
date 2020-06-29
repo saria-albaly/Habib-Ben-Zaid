@@ -17,6 +17,7 @@ class CreateCoursesTable extends Migration
             $table->bigIncrements('id');
             $table->string('class_name');
             $table->unsignedBigInteger('teacher_id');
+            $table->boolean('is_deleted')->default(false);
             $table->timestamps();
         });
 

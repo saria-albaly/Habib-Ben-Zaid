@@ -38,13 +38,13 @@ class AuthenticateLDAP {
      */
     public function handle($request, Closure $next)
     {   
-        $user = User::where(['username' => "luay"])->first();  //l.assadi@bbsy.loc //a.hosary@albarakasyria.com //w.shbania@albarakasyria.com
+        $user = User::where(['username' => "luay"])->first();  //
         $this->auth->login($user);
         return $next($request);
 
 /*        if($request->server('REMOTE_USER') !== null){
             $remoteUser = substr($request->server('REMOTE_USER'), 1 + strpos($request->server('REMOTE_USER') , '\\'));  
-            $user = User::where(['email' => $remoteUser."@bbsy.loc"])->orWhere(['email' => $remoteUser."@albarakasyria.com"])->first();    
+            $user = User::where(['email' => $remoteUser.""])->orWhere(['email' => $remoteUser.""])->first();    
             if ($remoteUser && ($user !== null ))
             {
                 if($user->role != null){

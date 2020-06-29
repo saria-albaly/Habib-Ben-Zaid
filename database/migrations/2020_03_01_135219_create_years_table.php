@@ -16,6 +16,8 @@ class CreateYearsTable extends Migration
         Schema::create('years', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('year_name');
+            $table->boolean('is_active');
+            $table->boolean('is_deleted')->default(false);
             $table->timestamps();
         });
     }

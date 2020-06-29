@@ -36,7 +36,7 @@
               <img src="{{ asset('dist/img/avatar.png') }}" class="img-circle" alt="User Image">
 
               <p>
-                {{ Auth::user()->role->name }}
+                Auth::user()->role->name 
                 <small>Member since Nov. 2012</small>
               </p>
             </li>

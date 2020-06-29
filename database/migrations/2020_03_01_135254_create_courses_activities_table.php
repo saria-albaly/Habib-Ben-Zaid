@@ -17,11 +17,16 @@ class CreateCoursesActivitiesTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('activity_id');
             $table->unsignedBigInteger('y_s_c_id');
-
+            $table->unsignedBigInteger('course_id');
             $table->timestamps();
         });
 
         Schema::table('course_activities', function (Blueprint $table) {
+            $table->foreign('course_id')
+             ->references('id')
+             ->on('courses')
+             ->onDelete('cascade');
+             
             $table->foreign('activity_id')
              ->references('id')
              ->on('activities')

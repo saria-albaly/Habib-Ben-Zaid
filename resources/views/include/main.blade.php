@@ -24,6 +24,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
         apply the skin class to the body tag so the changes take effect. -->
   <link rel="stylesheet" href="{{ asset('dist/css/skins/skin-red.min.css') }}">
 
+<!--   <link rel="stylesheet" href="{{ asset('ui/jquery-ui.css') }}"> -->
+
   <style>
     preventcopy {
     -webkit-touch-callout: none; iOS Safari
@@ -51,6 +53,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- jQuery 3 -->
   <!-- <script src="{{ asset('bower_components/jquery/dist/jquery.min.js') }}"></script> -->
   <script src="{{ asset('ui/external/jquery/jquery.js') }}"></script>
+  <script src="{{ asset('ui/jquery-ui.js') }}"></script>
 </head>
 <!--
 BODY TAG OPTIONS:
@@ -81,11 +84,11 @@ desired effect
 <div class="wrapper">
 
   <!-- Main Header -->
+
  @include('include.header')
 
   <!-- Left side column. contains the logo and sidebar -->
   @include('include.sidebar')
-
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -142,7 +145,7 @@ desired effect
      user experience. -->
     @isset($table_script)
       <script>
-        $(function () {
+        $(document).ready(function() { 
           $('#example1').DataTable({
             "oLanguage": {
               "sSearch": "_INPUT_ البحث",
@@ -162,6 +165,42 @@ desired effect
         })
       </script>
     @endisset 
+    @isset($table_script_2)
+      <script>
+        $(function () {
+          $('#example2').DataTable({
+            "oLanguage": {
+              "sSearch": "_INPUT_ البحث",
+              "sLengthMenu": "إظهار _MENU_ عنصر",
+              "sZeroRecords": "لا يوجد عناصر",
+              "oPaginate":{
+                "sNext":"التالي",
+                "sPrevious":"السابق"
+              },
+              "sInfo":"إظهار من _START_ حتى _END_ من بين _TOTAL_ عنصر",
+              "sInfoFiltered": " (يوجد _TOTAL_ نتيجة بحث مطابقة من أصل _MAX_)",
+              "sInfoEmpty":"",
+              "sLoadingRecords": "جاري التحميل ...",
+              "sProcessing":     "جاري المعالجة ...",
+            }
+          })
+        })
+      </script>
+    @endisset
+    @isset($daterange)
+      <script type="text/javascript">
+        $(document).ready(function() {
+          $('{{$daterange}}').daterangepicker({
+            singleDatePicker : true,
+            timePicker: true,
+            timePickerIncrement: 30,
+            locale: {
+              format: 'MM/DD/YYYY hh:mm A'
+            }
+          })
+        });
+      </script>
+    @endisset
   @include('global_modal.error_modal')
   @include('global_modal.success_modal')
   @include('global_modal.confirm_modal')

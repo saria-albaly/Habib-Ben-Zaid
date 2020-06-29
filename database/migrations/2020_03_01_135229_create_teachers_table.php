@@ -18,6 +18,7 @@ class CreateTeachersTable extends Migration
             $table->string('teacher_name');
             $table->string('teacher_phone');
             $table->string('teacher_address');
+            $table->boolean('is_deleted')->default(false);
             $table->timestamps();
         });
     }
