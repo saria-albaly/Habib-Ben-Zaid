@@ -9,7 +9,6 @@
     "license": "MIT",
     "require": {
         "php": "^7.2",
-        "adldap2/adldap2-laravel": "^6.0",
         "caseyamcl/toc": "^2.1",
         "fideloper/proxy": "^4.0",
         "laravel/framework": "^6.2",
