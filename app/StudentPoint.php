@@ -1,12 +1,12 @@
 <?php
 
 namespace App;
+
+use Illuminate\Database\Eloquent\Model;
 use App\Student;
 use App\Course;
-use App\Point;
-use Illuminate\Database\Eloquent\Model;
 
-class Recite extends Model
+class StudentPoint extends Model
 {
     //
     public function student()
@@ -17,10 +17,5 @@ class Recite extends Model
     public function course()
     {
         return $this->belongsTo(Course::class,'course_id');
-    }
-
-    public function point()
-    {
-        return $this->belongsTo(Point::class,'point_id');
     }
 }

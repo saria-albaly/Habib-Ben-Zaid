@@ -233,7 +233,7 @@ class StudentController extends Controller
         //
       $type = $request->type;
       $term = $request->search;
-      if($type="all"){
+      if($type=="all"){
         $term = $request->search1;
         if(isset($term))
           $type = 'student_id';

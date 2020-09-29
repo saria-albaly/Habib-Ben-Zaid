@@ -20,6 +20,7 @@ class VerifyCsrfToken extends Middleware
      */
     protected $except = [
         //
-        '/semester/absences*'
+        '/semester/absences*',
+        '/semester/points*'
     ];
 }

@@ -15,8 +15,15 @@ Route::get('/', 'YearController@index')->middleware(['auth','can']);
 
 Route::resource('/years', 'YearController')->middleware(['auth','can']);
 Route::resource('/semesters/instance', 'YearSemesterController')->middleware(['auth','can']);
+
 Route::get('/semester/absences/refresh', 'AbsenceController@refresh')->middleware(['auth','can']);
 Route::resource('/semester/absences', 'AbsenceController')->middleware(['auth','can']);
+
+Route::get('/semester/points/refresh', 'PointController@refresh')->middleware(['auth','can']);
+Route::resource('/semester/points', 'PointController')->middleware(['auth','can']);
+
+Route::resource('/semester/recite', 'ReciteController')->middleware(['auth','can']);
+
 Route::resource('/semesters', 'SemesterController')->middleware(['auth','can']);
 Route::resource('/teachers', 'TeacherController')->middleware(['auth','can']);
 Route::resource('/courses', 'CourseController')->middleware(['auth','can']);

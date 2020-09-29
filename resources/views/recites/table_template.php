@@ -10,7 +10,7 @@
       <td>
         <form action="<?=  url('/semester/absences/'.$absence_log->id) ?>" method="POST" style="display: contents;" class="delete_form">
           <?=  method_field('DELETE') ?>
-          <button type="submit" class="btn btn-danger btn-flat delete" title="حذف تسجيلة الحضور"><i class="fa fa-trash-o"></i></button>
+          <button type="submit" class="btn btn-danger btn-flat delete" title="حذف الوثيقة"><i class="fa fa-trash-o"></i></button>
         </form>
       </td>
     </tr>

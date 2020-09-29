@@ -27,7 +27,7 @@
       <div class="box-header">
         <div class="row">
           <div class="col-md-10 pull-right" style="text-align: right;">
-            <h3 class="box-title">أخذ حضور الطالب</h3>
+            <h3 class="box-title">إضافة نقاط للطلاب</h3>
           </div>
         </div>
       </div>
@@ -65,32 +65,46 @@
                 <label>معلومات الحلقة</label>&nbsp;: <br>
               </div>
               <div class="col-md-8 pull-right" style="margin-right: -20%;">
-                <label id="res_student_name">لؤي الاسدي</label><br>
-                <label id="res_student_father" >محمد</label><br>
-                <label id="res_student_phone" >0115757398</label><br>
-                <label id="res_student_classInfo" >0115757398</label><br>
+                <label id="res_student_name"></label><br>
+                <label id="res_student_father" ></label><br>
+                <label id="res_student_phone" ></label><br>
+                <label id="res_student_classInfo" ></label><br>
               </div>
             </div>
             <div class="row">
               <div class="col-md-6 pull-right" > 
                 <ul class='nav nav-pills' style="float: right;">
-                  <li style="margin: 0 5px 0 5px"><a data-toggle='tab' href='#indirect' >تسجيل حضور يوم محدد</a>
+                  <li style="margin: 0 5px 0 5px"><a data-toggle='tab' href='#indirect' >إضافة نقاط في يوم محدد</a>
                   </li>
-                  <li style="margin: 0 5px 0 5px" class="active"><a data-toggle='tab' href='#direct' >تسجيل حضور اليوم</a>
+                  <li style="margin: 0 5px 0 5px" class="active"><a data-toggle='tab' href='#direct' >إضافة نقاط للطالب</a>
                   </li>
                 </ul>
                 <div class="tab-content" >
-                  <div id='direct' class='tab-pane active' style="padding-top: 15%;">      
-                      <button class="btn btn-block btn-success" onclick="registerStudentArrival('ontime',1)">تسجيل حضور ( على الوقت )</button>
-                      <button class="btn btn-block btn-warning" onclick="registerStudentArrival('late',1)">تسجيل حضور (متأخر)</button>
+                  <div id='direct' class='tab-pane active' style="padding-top: 15%;">
+                      <div class="form-group">
+                          <label>سبب النقاط</label>
+                          <input type="text" class="form-control float-right" id="student_point_cause" name="student_point_cause">
+                      </div>
+                      <div class="form-group">
+                          <label>قيمة النقاط</label>
+                          <input type="number" min="0" class="form-control float-right" id="student_point_amount" name="student_point_amount">
+                      </div>      
+                      <button class="btn btn-block btn-success" onclick="registerStudentPoint(1)">إضافة النقاط</button>
                   </div>
                   <div id='indirect' class='tab-pane' style="padding-top: 15%;"> 
                       <div class="form-group">
                           <label>تاريخ ووقت وصول الطالب</label>
-                          <input type="text" class="form-control float-right" id="student_arrival_time" name="student_arrival_time">
-                      </div>    
-                      <button class="btn btn-block btn-success" onclick="registerStudentArrival('ontime',0)">تسجيل حضور ( على الوقت )</button>
-                      <button class="btn btn-block btn-warning" onclick="registerStudentArrival('late',0)">تسجيل حضور (متأخر)</button>
+                          <input type="text" class="form-control float-right" id="student_point_time" name="student_point_time">
+                      </div>
+                      <div class="form-group">
+                          <label>سبب النقاط</label>
+                          <input type="text" class="form-control float-right" id="student_point_cause" name="student_point_cause">
+                      </div>
+                      <div class="form-group">
+                          <label>قيمة النقاط</label>
+                          <input type="number" min="0" class="form-control float-right" id="student_point_amount" name="student_point_amount">
+                      </div>   
+                      <button class="btn btn-block btn-success" onclick="registerStudentPoint(0)">إضافة النقاط</button>
                   </div>
                 </div>  
               </div>
@@ -111,7 +125,7 @@
       <div class="box-header">
         <div class="row">
           <div class="col-md-10 pull-right" style="text-align: right;">
-            <h3 class="box-title">جدول حضور الطلاب</h3>
+            <h3 class="box-title">جدول نقاط الطلاب</h3>
           </div>
         </div>
       </div>
@@ -123,25 +137,29 @@
             <th style="direction:rtl;text-align: right">رقم الطالب</th>
             <th style="direction:rtl;text-align: right">اسم الطالب</th>
             <th style="direction:rtl;text-align: right">الحلقة</th>
-            <th style="direction:rtl;text-align: right">تاريخ ووقت الحضور</th>
+            <th style="direction:rtl;text-align: right">سبب النقاط</th>
+            <th style="direction:rtl;text-align: right">قيمة النقاط</th>
+            <th style="direction:rtl;text-align: right">تاريخ ووقت تسجيل النقاط</th>
             <th style="direction:rtl;text-align: right">العمليات</th>
           </tr>
           </thead>
           <tbody id="refreshBodyTable">
           <?php $i=1 ?>  
-          @isset($student_absence_array)
-            @foreach ($student_absence_array as $absence_log)
+          @isset($student_point_array)
+            @foreach ($student_point_array as $point_log)
               <tr>
-                <td>{{$absence_log->student_id}}</td>
-                <td style="direction:ltr">{{$absence_log->student->student_name}}</td>
-                <td style="direction:ltr">{{$absence_log->course->class_name}}</td>
-                <td style="direction:ltr">{{$absence_log->created_at}}</td>
-                <td style="direction:ltr<?php if($absence_log->point->point_code == "ontime") echo ";color:green"; else echo ";color:red"; ?>" > {{$absence_log->point->point_name}}</td> 
+                <td>{{$point_log->student_id}}</td>
+                <td style="direction:ltr">{{$point_log->student->student_name}}</td>
+                <td style="direction:ltr">{{$point_log->course->class_name}}</td>
+                <td style="direction:ltr">{{$point_log->created_at}}</td>
+                <td style="direction:ltr">{{$point_log->point_cause}}</td> 
+                <td style="direction:ltr">{{$point_log->point_amount}}</td> 
                 <td>
-                  <form action="{{ url('/semester/absences/'.$absence_log->id) }}" method="POST" style="display: contents;" class="delete_form">
+                  <form action="{{ url('/semester/points/'.$point_log->id) }}" method="POST" style="display: contents;" class="delete_form">
                     {{ method_field('DELETE') }}
                     @csrf
-                    <button type="submit" class="btn btn-danger btn-flat delete" title="حذف تسجيلة الحضور"><i class="fa fa-trash-o"></i></button>
+                    <input type="hidden" name="id" value="{{$point_log->id}}">
+                    <button type="submit" class="btn btn-danger btn-flat delete" title="حذف النقاط"><i class="fa fa-trash-o"></i></button>
                   </form>
                 </td>
               </tr>
@@ -215,6 +233,7 @@
        // Set selection
         $('#student_id').val(ui.item.id); // display the selected text
         $('#student_name').val(ui.item.student_name); // display the selected text
+        
         $("#res_student_div").show();
         $("#res_student_image").attr("src","../students/"+ui.item.student_image);
         $("#res_student_name").html(ui.item.student_name)
@@ -295,16 +314,17 @@
      });
   }
 
-  function registerStudentArrival(type, is_currentTimestamp){
+  function registerStudentPoint(is_currentTimestamp){
     $.ajax({
-      url: "{{url('/semester/absences')}}",
+      url: "{{url('/semester/points')}}",
       type: 'post',
       dataType: "json",
       data: {
        student_id       : $('#student_id').val(),
-       type             : type,
        now              : is_currentTimestamp,
-       arrival_datetime : $('#student_arrival_time').val(),
+       point_datetime   : $('#student_point_time').val(),
+       point_cause      : $('#student_point_cause').val(),
+       point_amount     : $('#student_point_amount').val()
       },
       success: function( data ) {
         if(data.error == true){
@@ -325,7 +345,7 @@
 <script type="text/javascript">
   function refreshTable(){
     $.ajax({
-      url: "{{url('/semester/absences/refresh')}}",
+      url: "{{url('/semester/points/refresh')}}",
       type: 'get',
       dataType: "html",
       data: {},
@@ -353,4 +373,10 @@
       }
      });
   }
+
+  $('#example1').on('error.dt',
+    function(e, settings, techNote, message) {
+      console.log("ssssssssssssssssssssssss")
+    })
+  
 </script>

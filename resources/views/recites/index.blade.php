@@ -27,7 +27,7 @@
       <div class="box-header">
         <div class="row">
           <div class="col-md-10 pull-right" style="text-align: right;">
-            <h3 class="box-title">أخذ حضور الطالب</h3>
+            <h3 class="box-title">أخذ تسميعات الطالب</h3>
           </div>
         </div>
       </div>
@@ -74,9 +74,9 @@
             <div class="row">
               <div class="col-md-6 pull-right" > 
                 <ul class='nav nav-pills' style="float: right;">
-                  <li style="margin: 0 5px 0 5px"><a data-toggle='tab' href='#indirect' >تسجيل حضور يوم محدد</a>
+                  <li style="margin: 0 5px 0 5px"><a data-toggle='tab' href='#indirect' >تسميع مجموعة صفحات</a>
                   </li>
-                  <li style="margin: 0 5px 0 5px" class="active"><a data-toggle='tab' href='#direct' >تسجيل حضور اليوم</a>
+                  <li style="margin: 0 5px 0 5px" class="active"><a data-toggle='tab' href='#direct' >تسميع صفحة</a>
                   </li>
                 </ul>
                 <div class="tab-content" >
@@ -141,7 +141,7 @@
                   <form action="{{ url('/semester/absences/'.$absence_log->id) }}" method="POST" style="display: contents;" class="delete_form">
                     {{ method_field('DELETE') }}
                     @csrf
-                    <button type="submit" class="btn btn-danger btn-flat delete" title="حذف تسجيلة الحضور"><i class="fa fa-trash-o"></i></button>
+                    <button type="submit" class="btn btn-danger btn-flat delete" title="حذف الوثيقة"><i class="fa fa-trash-o"></i></button>
                   </form>
                 </td>
               </tr>
